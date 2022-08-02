@@ -15,6 +15,14 @@ public class DestroyOutOfBounds : MonoBehaviour
     private float scorePosY = 625;
     private float lifePosY = 525;
 
+    private AudioSource playerAudio;
+    public AudioClip gameoverSound;
+
+    private void Start()
+    {
+        playerAudio = GetComponent<AudioSource>();
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -48,6 +56,7 @@ public class DestroyOutOfBounds : MonoBehaviour
 
     public void GameOver()
     {
+        playerAudio.PlayOneShot(gameoverSound);
         gameOverUI.gameObject.SetActive(true);
         grid.gameObject.SetActive(false);
         setPosition();

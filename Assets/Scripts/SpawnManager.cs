@@ -47,7 +47,7 @@ public class SpawnManager : MonoBehaviour
         Vector3 fruitSpawnPosition = new Vector3();
         int fruitIndex;
 
-        if (Random.Range(0, 2) == 1)
+        if (Random.Range(0, 3) == 1)
         {
             fruitSpawnPosition.y = platformPos.y + Random.Range(fruitMinY, fruitMaxY);
             fruitSpawnPosition.x = platformPos.x + Random.Range(-fruitXRange, fruitXRange);

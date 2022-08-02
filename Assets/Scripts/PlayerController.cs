@@ -13,6 +13,10 @@ public class PlayerController : MonoBehaviour
     public bool landedOnGround;
     public bool isJumpKeyPressed;
 
+    private AudioSource playerAudio;
+    public AudioClip jumpSound;
+    public AudioClip shootSound;
+
     public string direction;
 
     public Animator animator;
@@ -20,6 +24,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        playerAudio = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -93,6 +98,7 @@ public class PlayerController : MonoBehaviour
         if (isJumpKeyPressed)
         {
             animator.SetTrigger(PAP.jumpTriggerName);
+            playerAudio.PlayOneShot(jumpSound, 1);
         }
         else
         {
@@ -108,6 +114,7 @@ public class PlayerController : MonoBehaviour
             GameObject pooledProjectile = ObjectPooler.SharedInstance.GetPooledObject();
             if (pooledProjectile != null)
             {
+                playerAudio.PlayOneShot(shootSound);
                 pooledProjectile.SetActive(true); // activate it
                 pooledProjectile.transform.position = transform.position; // position it at player
                 pooledProjectile.transform.rotation = transform.rotation;

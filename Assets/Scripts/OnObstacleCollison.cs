@@ -10,12 +10,21 @@ public class OnObstacleCollison : MonoBehaviour
 
     private IEnumerator coroutine;
 
+    private AudioSource playerAudio;
+    public AudioClip crashSound;
+
+    private void Start()
+    {
+        playerAudio = GetComponent<AudioSource>();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         coroutine = PlayerInactiveWait(1f);
 
         if (collision.gameObject.CompareTag("Spike"))
         {
+            playerAudio.PlayOneShot(crashSound);
             if (fruitCollected.activeInHierarchy)
                 fruitCollected.SetActive(false);
             fruitCollected.transform.position = collision.gameObject.transform.position;
@@ -34,6 +43,7 @@ public class OnObstacleCollison : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            playerAudio.PlayOneShot(crashSound);
             if (fruitCollected.activeInHierarchy)
                 fruitCollected.SetActive(false);
             fruitCollected.transform.position = collision.gameObject.transform.position;

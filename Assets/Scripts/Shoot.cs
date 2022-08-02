@@ -9,9 +9,12 @@ public class Shoot : MonoBehaviour
     public GameObject fruitCollected;
     private GameUIHandler canvas;
 
+    private AudioSource playerAudio;
+
     private void Start()
     {
         fruitCollected = GameObject.FindGameObjectWithTag("Collected");
+        playerAudio = GetComponentInParent<AudioSource>();
     }
 
     void Update()
@@ -23,11 +26,10 @@ public class Shoot : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log(fruitCollected.transform.position);
+            playerAudio.Play();
             if (fruitCollected.activeInHierarchy)
                 fruitCollected.SetActive(false);
             fruitCollected.transform.position = collision.gameObject.transform.position;
-            Debug.Log(fruitCollected.transform.position);
             Destroy(collision.gameObject);
             gameObject.SetActive(false);
             fruitCollected.SetActive(true);
