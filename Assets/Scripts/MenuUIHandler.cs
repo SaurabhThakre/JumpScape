@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEditor;
+//using UnityEditor;
 using TMPro;
 
 public class MenuUIHandler : MonoBehaviour
@@ -26,15 +26,11 @@ public class MenuUIHandler : MonoBehaviour
 
     public void Exit()
     {
-        if (Application.isEditor)
-        {
-            EditorApplication.ExitPlaymode();
-        }
-        else
-        {
-            Application.Quit(); // original code to quit Unity player
-        }
-
+        //if (Application.isEditor)
+        //{
+        //    EditorApplication.ExitPlaymode();
+        //}
+        Application.Quit();
     }
 
     public void ResetBestScore()

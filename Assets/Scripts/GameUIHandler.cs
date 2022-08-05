@@ -35,7 +35,7 @@ public class GameUIHandler : MonoBehaviour
     public void UpdateLife(int lifeToRemove)
     {
         life -= lifeToRemove;
-        lifeText.text = "Life : " + life;
+        lifeText.text = "Health : " + life;
         if (life == 0)
         {
             gameOverObject = GameObject.Find("CollisonBoundBottom").GetComponent<DestroyOutOfBounds>();

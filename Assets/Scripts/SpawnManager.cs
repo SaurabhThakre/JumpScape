@@ -79,7 +79,7 @@ public class SpawnManager : MonoBehaviour
 
         if (Random.Range(0, 10) == 1)
         {
-            enemySpawnPosition.y = platformPos.y + spikeY + 0.1f;
+            enemySpawnPosition.y = platformPos.y + spikeY + 0.5f;
             enemySpawnPosition.x = platformPos.x + Random.Range(-spikeXRange+1, spikeXRange-1);
             enemySpawnPosition.z = platformPos.z - 1;
             enemyIndex = Random.Range(0, enemyPrefabs.Length);
